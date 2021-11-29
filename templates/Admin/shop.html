@@ -1,0 +1,106 @@
+{% extends 'Admin/base.html' %}
+{% load static %}
+{% block content %}
+            <!-- Page Container START -->
+            <div class="page-container">
+                
+
+                <!-- Content Wrapper START -->
+                <div class="main-content">
+                    <div class="page-header">
+                        <h2 class="header-title">Data Table</h2>
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb breadcrumb-dash">
+                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <a class="breadcrumb-item" href="#">Tables</a>
+                                <span class="breadcrumb-item active">Data Table</span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="m-t-25">
+                                <table id="data-table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Clients</th>
+                                            <th>total</th>
+                                            <th>date</th>
+                                            <th>Qabul qilish</th>
+                                            <th>O'chirish</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for shop in shops %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ shop.client.first_name }}</td>
+                                                <td><a href="/boshqaruv/shopitem/{{ shop.id }}/">{{ shop.total }}</a></td>
+                                                <td>{{shop.date}}</td>
+                                                <td><a href="/boshqaruv/buyurtmaqabul/{{ shop.id }}/">Qabul qilish</a></td>
+                                                <td><a href="/boshqaruv/ochirsh/{{ shop.id }}/">O'chirish</a></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="code-example">
+                                <pre><code class="language-markup">&lt;!-- page css -->
+&lt;link href="assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
+
+&lt;!-- page js -->
+&lt;script src="assets/vendors/datatables/jquery.dataTables.min.js">&lt;/script>
+&lt;script src="assets/vendors/datatables/dataTables.bootstrap.min.js">&lt;/script></code></pre>
+                            </div>
+                            <div class="code-example">
+                                <pre><code class="language-markup"><script type="text/plain"><table id="data-table" class="table">
+    <thead>
+        <tr>
+            <th>...</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>...</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>...</th>
+        </tr>
+    </tfoot>
+</table></script></code></pre>
+                            </div>
+                            <div class="code-example">
+                                <pre><code class="language-js"><script type="text/plain">$('#data-table').DataTable();</script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Wrapper END -->
+
+                <!-- Footer START -->
+                <footer class="footer">
+                    <div class="footer-content">
+                        <p class="m-b-0">Copyright © 2019 Theme_Nate. All rights reserved.</p>
+                        <span>
+                            <a href="" class="text-gray m-r-15">Term &amp; Conditions</a>
+                            <a href="" class="text-gray">Privacy &amp; Policy</a>
+                        </span>
+                    </div>
+                </footer>
+                <!-- Footer END -->
+
+            </div>
+            <!-- Page Container END -->
+
+    {% endblock content %}
